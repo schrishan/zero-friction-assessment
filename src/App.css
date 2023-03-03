@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+.top-row {
+  text-align: right;
+  float: right;
+  width:100%;
+  justify-content: end!important;
+}
+.col-alert{
+  text-align: left;
+}

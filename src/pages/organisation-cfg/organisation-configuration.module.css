@@ -1,0 +1,18 @@
+.header {
+  background-color: white !important;
+}
+.header::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  padding: 2.4rem;
+  margin: 0rem;
+}
