@@ -86,7 +86,7 @@ const TopSection = () => {
   };
 
   return (
-    <Row justify="end" className="top-row">
+    <Row justify="end" className="top-row" data-testid="top-section">
       {formIsTouched && !formIsValid && (
         <Col xs={24} sm={12} className="col-alert">
           <Space direction="horizontal" align="baseline">
@@ -113,7 +113,7 @@ const TopSection = () => {
         )}
 
       <Col xs={24} sm={12} className="col-btn">
-        <Space direction="horizontal" align="baseline">
+        <Space direction="horizontal" align="baseline" data-testid="cancel-btn">
           {formIsTouched && (
             <Form.Item>
               <Button type="text" onClick={handleCancel}>
@@ -123,6 +123,7 @@ const TopSection = () => {
           )}
           <Form.Item>
             <Button
+              data-testid="save-btn"
               type="primary"
               onClick={handleSave}
               disabled={!formIsTouched || !formIsValid}

@@ -1,16 +1,18 @@
 import { createContext, useState, ReactNode } from "react";
 
-interface FormValues {
-  [key: string]: {
-    value: string | boolean;
+type FormValue = {
+  value: string | boolean;
   error: string;
   touched: boolean;
-  }
-}
+};
 
-interface OrgFormData {
+type FormValues = {
+  [key: string]: FormValue;
+};
+
+type OrgFormData = {
   formValues: FormValues;
-}
+};
 
 const initialFormValues: FormValues = {
   migrationMode: {
@@ -84,26 +86,28 @@ const initialFormValues: FormValues = {
     touched: false,
   },
 };
+
 const initialFormData: OrgFormData = {
   formValues: initialFormValues,
 };
 
-export const OrgFormDataContext = createContext<{
+export type OrgFormDataContextType = {
   orgFormData: OrgFormData;
   initialOrgFormData: FormValues;
   setOrgFormData: (values: FormValues) => void;
-}>({
+};
+
+export const OrgFormDataContext = createContext<OrgFormDataContextType>({
   orgFormData: initialFormData,
   setOrgFormData: () => {},
   initialOrgFormData: initialFormValues,
 });
 
 const OrgFormDataProvider = ({ children }: { children: ReactNode }) => {
-  const initialOrgFormData = initialFormValues;
-  const [orgFormData, setFormValues] = useState<OrgFormData>(initialFormData);
+  const [orgFormData, setOrgFormData] = useState<OrgFormData>(initialFormData);
 
-  const setOrgFormData = (values: FormValues) => {
-    setFormValues((prevData) => ({
+  const setFormValues = (values: FormValues) => {
+    setOrgFormData((prevData) => ({
       ...prevData,
       formValues: {
         ...prevData.formValues,
@@ -113,7 +117,13 @@ const OrgFormDataProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <OrgFormDataContext.Provider value={{initialOrgFormData, orgFormData, setOrgFormData }}>
+    <OrgFormDataContext.Provider
+      value={{
+        initialOrgFormData: initialFormValues,
+        orgFormData,
+        setOrgFormData: setFormValues,
+      }}
+    >
       {children}
     </OrgFormDataContext.Provider>
   );

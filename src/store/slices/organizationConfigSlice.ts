@@ -43,19 +43,13 @@ const organizationConfigSlice = createSlice({
     updateAddress: (state, action: PayloadAction<AddressType>) => {
       state.data.address = action.payload;
     },
-    // resetOrganizationConfig: (state, action: PayloadAction<OrganizationConfigType>) => {
-    //   state.data = initialState.data;
-    // },
     resetOrganizationConfig: (state, action: PayloadAction<OrganizationConfigType>) => {
       state.data = action.payload;
-    },
-    hi: () => {
-      alert('ddf');
     },
   },
 });
 
 
-export const { updateOrganizationDetails, updateContactDetails, updateAddress, resetOrganizationConfig,  } = organizationConfigSlice.actions;
+export const { updateOrganizationDetails, updateContactDetails, updateAddress, resetOrganizationConfig, } = organizationConfigSlice.actions;
 
 export default organizationConfigSlice.reducer;

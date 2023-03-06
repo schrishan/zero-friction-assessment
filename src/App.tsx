@@ -1,12 +1,12 @@
-import './App.css';
-import OrgFormDataProvider from './context/organisationData.context';
-import OrganisationConfiguration from './pages/organisation-cfg/OrganisationConfiguration';
+import "./App.css";
+import OrgFormDataProvider from "./context/organisationData.context";
+import OrganisationConfiguration from "./pages/organisation-cfg/OrganisationConfiguration";
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className="App">
       <OrgFormDataProvider>
-      <OrganisationConfiguration />
+        <OrganisationConfiguration />
       </OrgFormDataProvider>
     </div>
   );

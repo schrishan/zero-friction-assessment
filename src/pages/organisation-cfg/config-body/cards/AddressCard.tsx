@@ -11,7 +11,7 @@ const AddressCard = () => {
   const { orgFormData, setOrgFormData } = useContext(OrgFormDataContext);
   const dispatch = useDispatch();
   const address = useSelector(
-    (state: RootState) => state.organizationConfig.data.address
+    (state: RootState) => state.organizationConfig?.data.address
   );
   const handleOnChange = (e: any) => {
     const { name, value, type, checked } = e.target;
@@ -26,7 +26,11 @@ const AddressCard = () => {
   };
 
   return (
-    <Card title="Address" bodyStyle={{ textAlign: "left" }}>
+    <Card
+      title="Address"
+      bodyStyle={{ textAlign: "left" }}
+      data-testid="address-card"
+    >
       <Form.Item
         label="Street name"
         required
@@ -38,11 +42,13 @@ const AddressCard = () => {
             ? orgFormData.formValues["streetName"].error
             : ""
         }
+        htmlFor="streetName"
       >
         <Input
+          id="streetName"
           name="streetName"
           onChange={handleOnChange}
-          value={address.streetName}
+          value={address?.streetName}
         />
       </Form.Item>
 
@@ -57,11 +63,14 @@ const AddressCard = () => {
             ? orgFormData.formValues["streetNumber"].error
             : ""
         }
+        htmlFor="streetNumber"
       >
         <Input
+          id="streetNumber"
+          data-testid="streetNumber"
           name="streetNumber"
           onChange={handleOnChange}
-          value={address.streetNumber}
+          value={address?.streetNumber}
           style={{ width: "100%" }}
         />
       </Form.Item>
@@ -77,11 +86,14 @@ const AddressCard = () => {
             ? orgFormData.formValues["postalCode"].error
             : ""
         }
+        htmlFor="postalCode"
       >
         <Input
+          id="postalCode"
+          data-testid="postalCode"
           name="postalCode"
           onChange={handleOnChange}
-          value={address.postalCode}
+          value={address?.postalCode}
           style={{ width: "100%" }}
         />
       </Form.Item>
@@ -97,8 +109,15 @@ const AddressCard = () => {
             ? orgFormData.formValues["city"].error
             : ""
         }
+        htmlFor="city"
       >
-        <Input name="city" onChange={handleOnChange} value={address.city} />
+        <Input
+          id="city"
+          data-testid="city"
+          name="city"
+          onChange={handleOnChange}
+          value={address?.city}
+        />
       </Form.Item>
 
       <Form.Item
@@ -112,13 +131,17 @@ const AddressCard = () => {
             ? orgFormData.formValues["country"].error
             : ""
         }
+        htmlFor="country"
       >
         <Input
+          id="country"
+          data-testid="country"
           name="country"
           onChange={handleOnChange}
-          value={address.country}
+          value={address?.country}
         />
       </Form.Item>
+      <span data-testid="error-alert"></span>
     </Card>
   );
 };

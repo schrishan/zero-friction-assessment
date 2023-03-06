@@ -50,7 +50,11 @@ const OrganizationDetailsCard = () => {
   };
 
   return (
-    <Card title="Organization Details" bodyStyle={{ textAlign: "left" }}>
+    <Card
+      title="Organization Details"
+      bodyStyle={{ textAlign: "left" }}
+      data-testid="organization-details-card"
+    >
       <Form.Item
         required
         valuePropName="checked"
@@ -62,10 +66,13 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["migrationMode"].error
             : ""
         }
+        htmlFor="migrationMode"
       >
         <Checkbox
+          id="migrationMode"
+          data-testid="migrationMode"
           name="migrationMode"
-          checked={organizationDetail.migrationMode}
+          checked={organizationDetail?.migrationMode}
           onChange={onMigrationModeChange}
         >
           Migration mode
@@ -83,11 +90,14 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["code"].error
             : ""
         }
+        htmlFor="code"
       >
         <Input
+          id="code"
+          data-testid="code"
           name="code"
           onChange={handleOnChange}
-          value={organizationDetail.code}
+          value={organizationDetail?.code}
         />
       </Form.Item>
 
@@ -102,11 +112,14 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["description"].error
             : ""
         }
+        htmlFor="description"
       >
         <Input
+          id="description"
+          data-testid="description"
           name="description"
           onChange={handleOnChange}
-          value={organizationDetail.description}
+          value={organizationDetail?.description}
         />
       </Form.Item>
 
@@ -121,11 +134,14 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["bankAccount"].error
             : ""
         }
+        htmlFor="bankAccount"
       >
         <Input
+          id="bankAccount"
+          data-testid="bankAccount"
           name="bankAccount"
           onChange={handleOnChange}
-          value={organizationDetail.bankAccount}
+          value={organizationDetail?.bankAccount}
         />
       </Form.Item>
 
@@ -140,11 +156,14 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["vatAccountNumber"].error
             : ""
         }
+        htmlFor="vatAccountNumber"
       >
         <Input
+          id="vatAccountNumber"
+          data-testid="vatAccountNumber"
           name="vatAccountNumber"
           onChange={handleOnChange}
-          value={organizationDetail.vatAccountNumber}
+          value={organizationDetail?.vatAccountNumber}
         />
       </Form.Item>
 
@@ -161,13 +180,17 @@ const OrganizationDetailsCard = () => {
             ? orgFormData.formValues["companyAccountNumber"].error
             : ""
         }
+        htmlFor="companyAccountNumber"
       >
         <Input
+          id="companyAccountNumber"
+          data-testid="companyAccountNumber"
           name="companyAccountNumber"
           onChange={handleOnChange}
-          value={organizationDetail.companyAccountNumber}
+          value={organizationDetail?.companyAccountNumber}
         />
       </Form.Item>
+      <span data-testid="error-alert"></span>
     </Card>
   );
 };

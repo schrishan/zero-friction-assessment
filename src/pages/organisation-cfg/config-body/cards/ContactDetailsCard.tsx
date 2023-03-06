@@ -28,9 +28,13 @@ const ContactDetailsCard = () => {
   };
 
   return (
-    <Card title="Contact Details" bodyStyle={{ textAlign: "left" }}>
+    <Card
+      title="Contact Details"
+      bodyStyle={{ textAlign: "left" }}
+      data-testid="contact-details-card"
+    >
       <Form.Item
-      label="Email address"
+        label="Email address"
         required
         validateStatus={
           orgFormData.formValues["emailAddress"].error ? "error" : "success"
@@ -40,11 +44,14 @@ const ContactDetailsCard = () => {
             ? orgFormData.formValues["emailAddress"].error
             : ""
         }
+        htmlFor="emailAddress"
       >
         <Input
+          data-testid="emailAddress"
+          id="emailAddress"
           name="emailAddress"
           onChange={handleOnChange}
-          value={contactDetails.emailAddress}
+          value={contactDetails?.emailAddress}
         />
       </Form.Item>
 
@@ -59,14 +66,17 @@ const ContactDetailsCard = () => {
             ? orgFormData.formValues["telephone"].error
             : ""
         }
+        htmlFor="telephone"
       >
         <Input
+          data-testid="telephone"
+          id="telephone"
           name="telephone"
           minLength={10}
           maxLength={11}
           onChange={handleOnChange}
           style={{ width: "100%" }}
-          value={contactDetails.telephone}
+          value={contactDetails?.telephone}
         />
       </Form.Item>
 
@@ -81,13 +91,17 @@ const ContactDetailsCard = () => {
             ? orgFormData.formValues["website"].error
             : ""
         }
+        htmlFor="website"
       >
         <Input
+          data-testid="website"
+          id="website"
           onChange={handleOnChange}
-          value={contactDetails.website}
+          value={contactDetails?.website}
           name="website"
         />
       </Form.Item>
+      <span data-testid="error-alert"></span>
     </Card>
   );
 };
